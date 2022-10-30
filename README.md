@@ -37,7 +37,14 @@ Now you can run the script. Example:
 ## Run with Docker
 The dyndns.py script can be run in a docker container.
 
-First build the docker image:
+You can either build the docker image or retrieve it from the docker repository.
+
+Pull from docker repository:
+```
+docker pull marktb/dyndns
+```
+
+Or build the docker image:
 ```
 docker build -t dyndns:latest <directory_with_dyndns_source>
 ```
@@ -48,7 +55,7 @@ Run DynDNS in a Docker container. This example will use:
 - the sub domains `subdomain1` and `subdomain2`
 - the loginname `test_user` which is the TransIP account
 ```
-docker run --rm -it -v `pwd`/<file_with_key>:/app/key:ro dyndns:latest -d example.com -s subdomain1 subdomain2 -l test_user
+docker run --rm -it -v `pwd`/api_key:/app/key:ro marktb/dyndns:latest -d example.com -s subdomain1 subdomain2 -l test_user
 ```
 
 The --it argument is only needed when you want to test the script. It will keep stdin
